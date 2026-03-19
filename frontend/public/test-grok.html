@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grok API Test</title>
+</head>
+
+<body>
+    <h1>Grok API Test</h1>
+    <button onclick="testGrokAPI()">Test Grok API</button>
+    <pre id="output"></pre>
+
+    <script>
+        const GROK_API_KEY = "YOUR_API_KEY_HERE"; // Do not commit real keys
+
+        async function testGrokAPI() {
+            const output = document.getElementById('output');
+            output.textContent = "Testing Grok API...\n";
+
+            try {
+                console.log("API Key:", GROK_API_KEY.substring(0, 15) + "...");
+
+                const response = await fetch("https://api.x.ai/v1/chat/completions", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${GROK_API_KEY}`,
+                    },
+                    body: JSON.stringify({
+                        messages: [
+                            {
+                                role: "user",
+                                content: "Say hello in 5 words"
+                            }
+                        ],
+                        model: "grok-beta",
+                        temperature: 0.7,
+                        max_tokens: 50
+                    }),
+                });
+
+                output.textContent += `Status: ${response.status}\n`;
+
+                const data = await response.json();
+                output.textContent += `Response: ${JSON.stringify(data, null, 2)}\n`;
+
+                if (data.choices && data.choices[0]) {
+                    output.textContent += `\nMessage: ${data.choices[0].message.content}\n`;
+                }
+            } catch (error) {
+                output.textContent += `Error: ${error.message}\n`;
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+
+</html>
