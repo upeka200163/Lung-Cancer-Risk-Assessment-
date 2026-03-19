@@ -1,4 +1,4 @@
-# 🫁 Lung Cancer Risk Assessment System
+# 🏥 Lung Cancer Risk Assessment System
 
 ## Overview
 An AI-powered web application for early detection and risk assessment of lung cancer based on clinical symptoms and lifestyle factors. This tool provides instant risk analysis and personalized health recommendations.
@@ -363,16 +363,4 @@ If you think you may have a medical emergency, call your doctor or emergency ser
 
 ---
 
-## 🤝 Contributing
 
-This is an educational project. Contributions, suggestions, and feedback are welcome!
-
----
-
-## 📧 Contact
-
-For questions or feedback about this project, please open an issue in the repository.
-
----
-
-**Built with ❤️ for early cancer detection awareness**
